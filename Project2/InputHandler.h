@@ -5,11 +5,17 @@
 #include <map>
 #include <vector>
 #define MAX_COMMAND_INDEX	10
+/*
+ Clase encargada de captar inputs:
+ Debemos crear una estructura que herede a Command y añadirle los métodos oportunos para trabajar con él.
+*/
+
 enum InputType {
 	ACTION,
 	STATE,
 	RANGE
 };
+
 enum Action
 {
 	EXECUTE = true,
@@ -33,8 +39,6 @@ private:
 	
 	std::vector<std::tuple<int,int, Command*>> commands;
 
-	std::map <int,State> state_map;
-	std::map<int,Action>action_map;
 	
 	void dispatcher(std::vector<Command*> & command_queue);
 
@@ -57,6 +61,6 @@ public:
 	/*Removes a determined key-command*/
 	void removeInput(int key, Command* command);
 	bool generate_input_commands(std::vector<Command*> &command_queue);
-	bool input_mapping();
+	bool inputLoop();
 };
 

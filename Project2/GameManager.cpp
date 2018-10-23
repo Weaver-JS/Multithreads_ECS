@@ -22,6 +22,14 @@ void GameManager::initializeRenderSystem()
 	lastTickTime = 0.0f;
 	fpsLimiter = 0.0f;
 	fpsCap = true;
+	std::vector<Command*> cmdVector;
+	default_input * myInput = new default_input();
+	myInput->function_to_execute = []() {GameManager::getInstance()->pause(); GameManager::getInstance()->quit = true; };
+	cmdVector.push_back(myInput);
+	inputHandler = new InputHandler();
+	inputHandler->addInput(SDLK_ESCAPE, cmdVector[0]);
+	Game * game = new PongGame();
+	GameManager::getInstance()->changeGame(game);
 }
 
 GameManager::GameManager()
@@ -51,6 +59,31 @@ GameManager * GameManager::getInstance()
 	
 }
 
+ECS::World * GameManager::getWorld()
+{
+	return world;
+}
+
+InputHandler * GameManager::getInputHandler()
+{
+	return inputHandler;
+}
+
+SDL_Window * GameManager::getWindow()
+{
+	return window;
+}
+
+SDL_Renderer * GameManager::getRenderer()
+{
+	return renderer;
+}
+
+float GameManager::getDeltaTime()
+{
+	return deltaTime;
+}
+
 void GameManager::execute()
 {
 	try {
@@ -59,11 +92,10 @@ void GameManager::execute()
 			{
 				Uint32 startTime = SDL_GetTicks();
 				deltaTime = ((SDL_GetPerformanceCounter() - lastTickTime) * 1000 / (double)SDL_GetPerformanceFrequency());
+				inputHandler->inputLoop();
 				game->update();
-			
 				world->tick(deltaTime);
 				lastTickTime = SDL_GetPerformanceCounter();
-				
 				fpsLimiter = SDL_GetTicks() - startTime;
 				
 				if (fpsCap && fpsLimiter < 1000.0f / FRAMES_PER_SECOND)

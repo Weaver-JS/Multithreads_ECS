@@ -2,7 +2,7 @@
 
 
 
-bool InputHandler::input_mapping()
+bool InputHandler::inputLoop()
 {
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
@@ -36,27 +36,25 @@ void InputHandler::dispatcher(std::vector<Command*>& command_queue)
 
 void InputHandler::keydown(SDL_Event & event)
 {
-	if (state_map[event.key.keysym.sym] == RELEASED)
-		action_map[event.key.keysym.sym] = EXECUTE;
-	state_map[event.key.keysym.sym] = PRESSED;
+	
 }
 
 void InputHandler::keyup(SDL_Event & event)
 {
 	
-	state_map[event.key.keysym.sym] = RELEASED;
+
 	
 }
 
 bool InputHandler::is_held(int key)
 {
-	return  state_map[key];
 
+	return false;
 }
 
 bool InputHandler::was_pressed(int key)
 {
-	return action_map[key];
+	return false;
 }
 
 InputHandler::InputHandler()
@@ -92,11 +90,5 @@ void InputHandler::bind(int key, Command * command)
 
 bool InputHandler::generate_input_commands(std::vector<Command*>& command_queue)
 {
-	bool exit = input_mapping();
-	if (exit) return true;
-	else {
-		dispatcher(command_queue);
-		action_map.clear();
-	}
-	return false;
+	return true;
 }

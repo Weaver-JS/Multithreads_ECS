@@ -1,2 +1,7 @@
-﻿  Source.cpp
+﻿  GameManager.cpp
+c:\users\weaverr\source\repos\multithreading_engine\project2\project2\gamemanager.cpp(22): warning C4244: '=': conversion from 'float' to 'uint64_t', possible loss of data
+c:\users\weaverr\source\repos\multithreading_engine\project2\project2\gamemanager.cpp(23): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
+c:\users\weaverr\source\repos\multithreading_engine\project2\project2\gamemanager.cpp(94): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\weaverr\source\repos\multithreading_engine\project2\project2\gamemanager.cpp(103): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+c:\users\weaverr\source\repos\multithreading_engine\project2\project2\gamemanager.cpp(106): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
   Project2.vcxproj -> C:\Users\Weaverr\source\repos\Multithreading_engine\Project2\Debug\Project2.exe

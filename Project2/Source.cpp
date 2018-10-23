@@ -13,6 +13,7 @@
 #ifdef  main
 #undef main
 #endif //  main
+bool quit = false;
 void getInput()
 {
 	SDL_Event sdlEvent;
@@ -22,7 +23,7 @@ void getInput()
 		{
 
 		case SDL_KEYDOWN:
-			//quit = true;
+			quit = true;
 			std::cout << "Key press detected\n" << std::endl;
 			break;
 
@@ -71,8 +72,8 @@ struct myGame : Game {
 };
 int main()
 {
-	bool quit = false;
-	GameManager * gm = GameManager::getInstance();
+	
+	/*GameManager * gm = GameManager::getInstance();
 	obj object;
 	Command * cm = new myCommand();
 	Command* closeCMD = new myCommand();
@@ -84,35 +85,14 @@ int main()
 	InputHandler inputhandler;
 	inputhandler.addInput(SDLK_q, cmdVector[0]);
 	closeCMD->function_to_execute = [&quit]() {quit = true;};
-	inputhandler.addInput(SDLK_ESCAPE, cmdVector[1]);
+	inputhandler.addInput(SDLK_ESCAPE, cmdVector[1]);*/
 
-	//GameManager * gm = new GameManager();
-	/*InputHandler inputHandler; 
-	Command* print  = new p();
-	std::vector<Command*> command_queue;
-	
-	inputHandler.bind(SDLK_q, print);
-	double deltaTime = 0;
-	deltaTime = SDL_GetTicks();
-	ECS::World*  world = ECS::World::createWorld();
-
-	for (int i = 0; i < 100; ++i)
+	while (!GameManager::getInstance()->quit)
 	{
-		ECS::Entity * ent = world->create();
-		ent->assign<VIOD_ENTITY>(rand() % 100, rand() % 100).get().direction = Vector2(rand() % 10, rand() % 10);
+		GameManager::getInstance()->execute();
 	}
 
-	world->registerSystem(new moveSystem());
-	world->tick(deltaTime);
-	*/
-	
-	
-/*	SDL_Window *screen = SDL_CreateWindow("My Game Window",
-		SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
-		640, 480,
-		SDL_WINDOW_MINIMIZED | SDL_WINDOW_OPENGL);*/
-	Game * game = new myGame();
+	/*Game * game = new myGame();
 	GameManager::getInstance()->changeGame(game);
 
 	while (!quit)
@@ -124,5 +104,5 @@ int main()
 			
 		
 		//getInput();
-	}
+	}*/
 }
