@@ -28,31 +28,3 @@ public:
 	~Game();
 };
 
-/*
- Creamos una nueva clase que hereda de Game.
-*/
-struct pong_input : Command {
-	ECS::Entity * right_paddle;
-	virtual ~pong_input() override {}
-	virtual void execute(ECS::Entity * ent) override {
-		function_to_execute();
-	};
-	virtual InputType get_input_type() override {
-		return InputType::ACTION;
-	};
-};
-
-class PongGame : public Game {
-private:
-	ECS::Entity * right_paddle;
-
-public:
-	PongGame() :  Game(){}
-	void init(std::string gameName, ECS::World * world, InputHandler * inputHandler) override;
-	void update() override;
-	void destroy() override;
-	void input();
-
-	
-
-};

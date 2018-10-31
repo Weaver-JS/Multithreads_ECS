@@ -27,9 +27,9 @@ void GameManager::initializeRenderSystem()
 	inputHandler = new InputHandler();
 	inputHandler->addInput(SDLK_ESCAPE, cmdVector[0]);
 
-	Game * game = new PongGame();
+	/*Game * game = new Game();
 	game->init("Pong Game" ,world, inputHandler);
-	GameManager::getInstance()->changeGame(game);
+	GameManager::getInstance()->changeGame(game);*/
 }
 
 GameManager::GameManager()
