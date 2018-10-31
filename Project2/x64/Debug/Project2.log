@@ -1,5 +1,0 @@
-﻿  Source.cpp
-Source.obj : error LNK2019: sÝmbolo externo SDL_PollEvent sin resolver al que se hace referencia en la funci¾n main
-c:\users\usuari\documents\visual studio 2017\Projects\Project2\/lib/x86\SDL2.lib : warning LNK4272: el tipo de mßquina de biblioteca 'X86' estß en conflicto con el tipo de mßquina de destino 'x64'
-c:\users\usuari\documents\visual studio 2017\Projects\Project2\/lib/x86\SDL2main.lib : warning LNK4272: el tipo de mßquina de biblioteca 'X86' estß en conflicto con el tipo de mßquina de destino 'x64'
-c:\users\usuari\documents\visual studio 2017\Projects\Project2\x64\Debug\Project2.exe : fatal error LNK1120: 1 externos sin resolver
