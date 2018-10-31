@@ -1,0 +1,4 @@
+#pragma once
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 480
+#define FRAMES_PER_SECOND 120
